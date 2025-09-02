@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symposium Events</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Background video */
+    video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1; /* keep behind content */
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    /* Common box style */
+    .box {
+      background: rgba(0, 0, 0, 0.6); /* transparent dark */
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .box img {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    h2 {
+      margin-top: 15px;
+      color: #fff;
+      font-size: 1.6rem;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Technical box (cyan glow) */
+    .technical {
+      border: 2px solid cyan;
+      box-shadow: 0 0 20px rgba(0,255,255,0.6);
+    }
+    .technical:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(0,255,255,0.9);
+    }
+    .technical img {
+      border: 3px solid cyan;
+    }
+    .technical img:hover {
+      transform: scale(1.05);
+      border-color: gold;
+    }
+    .technical h2 {
+      text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+    }
+
+    /* Non-Technical box (golden glow) */
+    .nontechnical {
+      border: 2px solid gold;
+      box-shadow: 0 0 20px rgba(255,215,0,0.6);
+    }
+    .nontechnical:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 35px rgba(255,215,0,0.9);
+    }
+    .nontechnical img {
+      border: 3px solid gold;
+    }
+    .nontechnical img:hover {
+      transform: scale(1.05);
+      border-color: cyan;
+    }
+    .nontechnical h2 {
+      text-shadow: 0 0 10px gold, 0 0 20px gold;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr; /* stack vertically */
+        gap: 20px;
+        padding: 20px;
+      }
+      .box img {
+        max-width: 200px;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .box img {
+        max-width: 150px;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline>
+    <source src="Music.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="box technical">
+      <a href="Technical events.html">
+        <img src="Tech.jpg" alt="Technical Events">
+        <h2>Technical Events</h2>
+      </a>
+    </div>
+
+    <div class="box nontechnical">
+      <a href="Non Technical events.html">
+        <img src="nontech.jpg" alt="Non-Technical Events">
+        <h2>Non-Technical Events</h2>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

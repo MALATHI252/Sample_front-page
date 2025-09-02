@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qubitron v25 - Registration</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Times New Roman", serif;
+    background: linear-gradient(135deg, #0a0a3f, #1a0a3f); /* dark blue/purple */
+    color: white;
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+    letter-spacing: 2px;
+  }
+  h2 {
+    font-size: 2.5rem;
+    color: #ffd700; /* gold */
+    text-shadow: 0 0 12px #ffd700;
+  }
+  .highlight {
+    color: #33cccc; /* teal */
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  form {
+    margin: 20px auto;
+    max-width: 450px;
+    padding: 20px;
+    background: rgba(10, 10, 60, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    text-align: left;
+  }
+  label {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+    color: #ffd700; /* gold */
+  }
+  input, select, button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 16px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+  }
+  input, select {
+    background: #222244;
+    color: #ffffff;
+  }
+  input:focus, select:focus {
+    border: 2px solid #ffd700;
+  }
+  button {
+    background: #ffd700;
+    color: #0a0a3f;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    font-family: "Times New Roman", serif;
+  }
+  button:hover {
+    background: #33cccc;
+    color: #0a0a3f;
+  }
+  footer {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #33cccc;
+    font-family: "Times New Roman", serif;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 2rem; }
+    form { padding: 15px; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 1.2rem; }
+    h2 { font-size: 1.5rem; }
+    form { padding: 12px; }
+    button { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+<h1>UNIVERSITY COLLEGE OF ENGINEERING NAGERCOIL</h1>
+<p>DEPARTMENT OF ELECTRONICS AND COMMUNICATION ENGINEERING</p>
+<h2>Qubitron v25</h2>
+<p class="highlight">INTERDEPARTMENTAL TECHNICAL SYMPOSIUM</p>
+<p>Student Registration Portal</p>
+
+<form id="registerForm">
+  <label for="name">Full Name</label>
+  <input type="text" id="name" name="Full Name" placeholder="Enter your name" required>
+
+  <label for="email">Email ID</label>
+  <input type="email" id="email" name="Email ID" placeholder="Enter your email" required>
+
+  <label for="dept">Department</label>
+  <select id="dept" name="Department" required>
+    <option value="">-- Select Department --</option>
+    <option value="ECE">Electronics and Communication Engineering (ECE)</option>
+    <option value="CSE">Computer Science and Engineering (CSE)</option>
+    <option value="IT">Information Technology (IT)</option>
+    <option value="EEE">Electrical and Electronics Engineering (EEE)</option>
+    <option value="MECH">Mechanical Engineering (MECH)</option>
+    <option value="CIVIL">Civil Engineering (CIVIL)</option>
+  </select>
+
+  <button type="submit">Register</button>
+</form>
+
+<footer>© Qubitron v25 | Department of ECE</footer>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbwfm6LJ-xZptEjfEIBjL8MVS3mxMIapf1y3M9mjooc4eKpk1y-LUKsmEDhHgp6KGUQw/exec";
+const registerForm = document.getElementById("registerForm");
+const submitButton = registerForm.querySelector("button");
+
+registerForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  submitButton.disabled = true;
+  submitButton.textContent = "Processing... ⏳";
+
+  setTimeout(() => {
+    const formData = new FormData(registerForm);
+    fetch(scriptURL, { method: "POST", body: formData })
+      .then(() => {
+        alert("✅ You have successfully registered!");
+        window.location.href = "events.html";
+      })
+      .catch(error => {
+        console.error("Registration failed:", error.message);
+        alert("❌ Registration failed. Please try again.");
+        submitButton.disabled = false;
+        submitButton.textContent = "Register";
+      });
+  }, 1500);
+});
+</script>
+</body>
+</html>
