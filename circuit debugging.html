@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Circuit Debugging Registration</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 20px;
+      background: #1a1a1a;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.3);
+    }
+    h1 {
+      text-align: center;
+      text-shadow: 0 0 10px cyan;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #444;
+      background: #111;
+      color: #fff;
+    }
+    button {
+      display: block;
+      margin: 20px auto 0;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 10px;
+      background: cyan;
+      color: #000;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00ffaa;
+    }
+    .links {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .links a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 5px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .whatsapp {
+      background: #25d366;
+      color: #fff;
+    }
+    .whatsapp:hover {
+      background: #1ebc59;
+    }
+    .rules {
+      background: #ff9800;
+      color: #fff;
+    }
+    .rules:hover {
+      background: #e68900;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Circuit Debugging Registration</h1>
+
+    <form id="debugForm">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="regno">Register Number</label>
+      <input type="text" id="regno" name="regno" placeholder="Enter register number" required>
+
+      <label for="dept">Department</label>
+      <select id="dept" name="dept" required>
+        <option value="">Select Department</option>
+        <option>ECE</option>
+        <option>CSE</option>
+        <option>EEE</option>
+        <option>IT</option>
+        <option>Civil</option>
+        <option>Mech</option>
+      </select>
+
+      <label for="year">Year</label>
+      <select id="year" name="year" required>
+        <option value="">Select Year</option>
+        <option>1st Year</option>
+        <option>2nd Year</option>
+        <option>3rd Year</option>
+        <option>4th Year</option>
+      </select>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="Enter mobile number" required pattern="[0-9]{10}">
+
+      <label for="email">Email ID</label>
+      <input type="email" id="email" name="email" placeholder="Enter email address" required>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+
+    <div class="links">
+      <a href="https://chat.whatsapp.com/INvoKNDsUGbH3BD4WJAaUq" target="_blank" class="whatsapp">Join WhatsApp Group</a>
+      <a href="https://drive.google.com/file/d/1YEOCtb1d_ZaMaLbANaJehBAse13FT1PL/view?usp=drivesdk" target="_blank" class="rules">Click Here to Know Rules</a>
+    </div>
+  </div>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbwgc_RKLNaDT1SeUoq7Rh-Xg8kGIUsYriukNrctj-QmxzXRsRc2QUxMU1d35elnyXL-/exec"; // <-- Replace with your Apps Script Web App URL
+    const debugForm = document.getElementById("debugForm");
+    const submitButton = debugForm.querySelector("button");
+
+    debugForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Processing... ⏳";
+
+      const formData = new FormData(debugForm);
+      formData.append("eventName", "Circuit Debugging");
+
+      fetch(scriptURL, { method: "POST", body: formData })
+        .then(response => response.text())
+        .then(() => {
+          alert("✅ Registration submitted successfully!");
+          debugForm.reset();
+          submitButton.disabled = false;
+          submitButton.textContent = "Submit Registration";
+        })
+        .catch(error => {
+          console.error("Error!", error.message);
+          alert("❌ Registration failed. Please try again.");
+          submitButton.disabled = false;
+          submitButton.textContent = "Submit Registration";
+        });
+    });
+  </script>
+
+</body>
+</html>

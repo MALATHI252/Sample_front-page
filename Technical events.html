@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Events</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+
+  h1 {
+    margin: 20px 0;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan;
+    font-size: 2.2rem;
+  }
+
+  /* Event grid */
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
+  }
+
+  .event-box {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid cyan;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 0 10px cyan;
+  }
+
+  .event-box:hover {
+    background: rgba(0, 255, 255, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 0 25px cyan;
+  }
+
+  .event-box img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    background: #000;
+  }
+
+  .event-box p {
+    font-size: 20px;
+    margin: 0;
+    text-shadow: 0 0 5px cyan;
+  }
+
+  /* Responsive improvements */
+  @media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    .event-box p { font-size: 18px; }
+  }
+  @media (max-width: 480px) {
+    h1 { font-size: 1.5rem; }
+    .event-box p { font-size: 16px; }
+    .event-grid { gap: 15px; padding: 20px 10px; }
+  }
+</style>
+</head>
+<body>
+
+  <h1>Technical Events</h1>
+  <div class="event-grid">
+    <a href="poster.html" class="event-box">
+      <img src="poster.jpg" alt="Poster Presentation">
+      <p>Poster Presentation</p>
+    </a>
+    <a href="paper presentation.html" class="event-box">
+      <img src="paper presentation.jpg" alt="Paper Presentation">
+      <p>Paper Presentation</p>
+    </a>
+    <a href="circuit debugging.html" class="event-box">
+      <img src="circuit debugging.jpg" alt="Circuit Debugging">
+      <p>Circuit Debugging</p>
+    </a>
+    <a href="Technical Quiz.html" class="event-box">
+      <img src="Quiz.jpg" alt="Technical Quiz">
+      <p>Technical Quiz</p>
+    </a>
+  </div>
+
+</body>
+</html>

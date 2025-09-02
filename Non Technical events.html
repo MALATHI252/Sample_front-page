@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Technical Events</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background: #000;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 20px 0;
+      text-shadow: 0 0 10px lime, 0 0 20px lime;
+    }
+
+    /* Event grid */
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    .event-box {
+      display: block;
+      text-decoration: none;
+      color: white;
+      background: rgba(0, 255, 0, 0.1);
+      border: 2px solid lime;
+      border-radius: 15px;
+      padding: 15px;
+      transition: 0.3s;
+      cursor: pointer;
+      box-shadow: 0 0 10px lime;
+    }
+
+    .event-box:hover {
+      background: rgba(0, 255, 0, 0.25);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px lime;
+    }
+
+    .event-box img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      background: #000;
+    }
+
+    .event-box p {
+      font-size: 20px;
+      margin: 0;
+      text-shadow: 0 0 5px lime;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Event List -->
+  <h1>Non-Technical Events</h1>
+  <div class="event-grid">
+    <a href="interlink.html" class="event-box">
+      <img src="interlink.jpg" alt="Interlink">
+      <p>Interlink</p>
+    </a>
+
+    <a href="mindspark.html" class="event-box">
+      <img src="mindspark.jpg" alt="Mindspark">
+      <p>Mindspark</p>
+    </a>
+
+    <a href="photography.html" class="event-box">
+      <img src="photography.jpg" alt="Photography Contest">
+      <p>Photography Contest</p>
+    </a>
+
+    <a href="video_editing.html" class="event-box">
+      <img src="video_editing.jpg" alt="Video Editing Contest">
+      <p>Video Editing Contest</p>
+    </a>
+  </div>
+
+</body>
+</html>

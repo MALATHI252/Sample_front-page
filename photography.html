@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photography Contest Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px cyan;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #262626;
+      color: white;
+      font-size: 15px;
+    }
+    input[type="submit"] {
+      background: cyan;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 25px;
+    }
+    input[type="submit"]:hover {
+      background: #33ffff;
+    }
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .links a {
+      color: cyan;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .links a:hover {
+      color: #66ffff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Photography Contest Registration</h1>
+    <form action="#" method="post">
+
+      <!-- Single Participant -->
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="regno">Register Number</label>
+      <input type="text" id="regno" name="regno" required>
+
+      <label for="dept">Department</label>
+      <select id="dept" name="dept" required>
+        <option value="">--Select Department--</option>
+        <option>ECE</option>
+        <option>CSE</option>
+        <option>EEE</option>
+        <option>IT</option>
+        <option>CIVIL</option>
+        <option>MECH</option>
+      </select>
+
+      <label for="year">Year</label>
+      <select id="year" name="year" required>
+        <option value="">--Select Year--</option>
+        <option>I</option>
+        <option>II</option>
+        <option>III</option>
+        <option>IV</option>
+      </select>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required>
+
+      <!-- Submit -->
+      <input type="submit" value="Register">
+    </form>
+
+    <!-- WhatsApp Group First -->
+    <div class="links">
+      👉 Join our WhatsApp Group here:  
+      <a href="https://chat.whatsapp.com/JnC0NRaGgRQJrAqJSpNrpC?mode=ac_t" target="_blank">Click to Join</a>
+    </div>
+
+    <!-- Rules Link After -->
+    <div class="links">
+      📘 To know the rules:  
+      <a href="https://drive.google.com/file/d/1R3xaDagFmcPotJwbUZOftKqylEHg5jiJ/view?usp=drivesdk" target="_blank">Click Here</a>
+    </div>
+  </div>
+
+</body>
+</html>

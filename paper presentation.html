@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paper Presentation Registration</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d0d;
+  color: #f0f0f0;
+}
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+}
+h1 {
+  text-align: center;
+  text-shadow: 0 0 10px cyan;
+}
+form {
+  margin-top: 20px;
+}
+label {
+  display: block;
+  margin: 8px 0 5px;
+  font-weight: bold;
+}
+input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #111;
+  color: #fff;
+  box-sizing: border-box;
+}
+fieldset {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid cyan;
+  border-radius: 10px;
+}
+legend {
+  color: cyan;
+  padding: 0 8px;
+}
+button {
+  display: block;
+  margin: 20px auto 0;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  background: cyan;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #00ffaa;
+}
+.link-box {
+  text-align: center;
+  margin-top: 20px;
+}
+.link-box a {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #25d366;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  box-shadow: 0 0 10px rgba(0,255,100,0.5);
+  transition: 0.3s;
+  margin: 8px;
+}
+.link-box a.rules {
+  background: cyan;
+  color: black;
+  box-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+.link-box a:hover {
+  opacity: 0.85;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Paper Presentation Registration</h1>
+
+  <form id="paperForm">
+    <fieldset>
+      <legend>Team Information (1 or 2 Members)</legend>
+
+      <label for="teamName">Team Name</label>
+      <input type="text" id="teamName" name="teamName" placeholder="Enter Team Name" required>
+
+      <label for="members">Number of Members</label>
+      <select id="members" name="membersCount" required>
+        <option value="">Select</option>
+        <option value="1">1 Member</option>
+        <option value="2">2 Members</option>
+      </select>
+
+      <div id="membersContainer"></div>
+    </fieldset>
+
+    <button type="submit">Submit Registration</button>
+  </form>
+
+  <div class="link-box">
+    <p>👉 Join our official WhatsApp group:</p>
+    <a href="https://chat.whatsapp.com/GD6RZa8fZM76la3QjmQUZT?mode=ac_t" target="_blank">Join WhatsApp Group</a>
+    <p>📄 Read the Rules:</p>
+    <a href="https://drive.google.com/file/d/1BTsJ37Q95e1GvdBWDhxqqU2fgSaeaIJR/view?usp=drivesdk" target="_blank" class="rules">View Rules</a>
+  </div>
+</div>
+
+<script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbyU_p5wOz1fmSGofum_lIntmpPYRK218f7uiBTeOdo0BLruYp1z0GgIl3zbX4o8duinqw/exec"; // <-- Paste your Web App URL here
+const paperForm = document.getElementById("paperForm");
+const membersSelect = document.getElementById("members");
+const membersContainer = document.getElementById("membersContainer");
+const submitButton = paperForm.querySelector("button");
+
+// Dynamically generate member input fields
+membersSelect.addEventListener("change", function() {
+  membersContainer.innerHTML = "";
+  const count = parseInt(this.value);
+  for (let i = 1; i <= count; i++) {
+    const memberDiv = document.createElement("div");
+    memberDiv.innerHTML = `
+      <h3>Participant ${i} ${i === 1 ? "(Leader)" : ""}</h3>
+      <label for="p${i}name">Full Name</label>
+      <input type="text" id="p${i}name" name="p${i}name" required>
+      <label for="p${i}reg">Register Number</label>
+      <input type="text" id="p${i}reg" name="p${i}reg" required>
+      <label for="p${i}dept">Department</label>
+      <select id="p${i}dept" name="p${i}dept" required>
+        <option value="">Select Department</option>
+        <option>ECE</option>
+        <option>CSE</option>
+        <option>EEE</option>
+        <option>IT</option>
+        <option>Civil</option>
+        <option>Mech</option>
+      </select>
+      <label for="p${i}year">Year</label>
+      <select id="p${i}year" name="p${i}year" required>
+        <option value="">Select Year</option>
+        <option>1st Year</option>
+        <option>2nd Year</option>
+        <option>3rd Year</option>
+        <option>4th Year</option>
+      </select>
+      <label for="p${i}email">Email ID</label>
+      <input type="email" id="p${i}email" name="p${i}email" placeholder="Enter Email ID" required>
+      <label for="p${i}phone">Phone Number</label>
+      <input type="tel" id="p${i}phone" name="p${i}phone" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required>
+      <hr>
+    `;
+    membersContainer.appendChild(memberDiv);
+  }
+});
+
+// Submit form to Web App URL
+paperForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  submitButton.disabled = true;
+  submitButton.textContent = "Processing... ⏳";
+
+  const formData = new FormData(paperForm);
+
+  const count = parseInt(membersSelect.value);
+  for (let i = 1; i <= count; i++) {
+    formData.append(`p${i}name`, document.getElementById(`p${i}name`).value);
+    formData.append(`p${i}reg`, document.getElementById(`p${i}reg`).value);
+    formData.append(`p${i}dept`, document.getElementById(`p${i}dept`).value);
+    formData.append(`p${i}year`, document.getElementById(`p${i}year`).value);
+    formData.append(`p${i}email`, document.getElementById(`p${i}email`).value);
+    formData.append(`p${i}phone`, document.getElementById(`p${i}phone`).value);
+  }
+
+  fetch(scriptURL, { method: 'POST', body: formData })
+    .then(response => response.text())
+    .then(() => {
+      alert("✅ Registration submitted successfully!");
+      paperForm.reset();
+      membersContainer.innerHTML = "";
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Registration";
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      alert("❌ Registration failed. Please try again.");
+      submitButton.disabled = false;
+      submitButton.textContent = "Submit Registration";
+    });
+});
+</script>
+
+</body>
+</html>
